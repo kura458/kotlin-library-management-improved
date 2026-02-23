@@ -14,4 +14,8 @@ interface LibraryRepository {
     fun updatePatron(patron: Patron)
 
     fun getAllBooks(): List<Book>
+    fun deleteBook(isbn: String): Boolean
+
+    fun getAllPatrons(): List<Patron>
+    fun deletePatron(id: String): Boolean
 }

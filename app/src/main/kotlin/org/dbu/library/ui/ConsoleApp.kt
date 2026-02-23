@@ -28,5 +28,5 @@ fun seedData(repository: InMemoryLibraryRepository) {
     repository.addBook(Book("1", "Clean Code", "Robert Martin", 2008))
     repository.addBook(Book("2", "Effective Java", "Joshua Bloch", 2018))
 
-    repository.addPatron(Patron("P1", "Alice"))
+    repository.addPatron(Patron("P1", "Alice", "alice@example.com", "123-456-7890"))
 }
