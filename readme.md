@@ -1,134 +1,295 @@
 # Library Management System - Kotlin Exercise
 
-##  Project Overview
+## Project Overview
 
-This project is a simple **Library Management System** implemented in Kotlin. It serves as a hands-on exercise to practice Kotlin fundamentals and Gradle build tool basics. The code is intentionally incomplete - your task is to complete the implementation by following the application behavior.
+This project is a simple Library Management System implemented in Kotlin using Gradle. It was originally provided as a university exercise and is intended to help students understand Kotlin fundamentals, Gradle project structure, and software implementation.
 
----
+The original project contains intentionally incomplete sections. Students are expected to study the existing code, understand the requirements, and complete the missing functionality.
 
-##  Learning Objectives
+This repository contains additional automated tests and documentation to evaluate and improve the library management implementation.
 
-- Understand **Gradle** as a build tool (essential for Android development)
-- Practice **Kotlin** core language concepts
-- Navigate and complete an existing codebase
-- Build and run executable JAR files
+## Learning Objectives
 
----
+By working on this project, students will learn how to:
 
-##  Prerequisites & Setup
+- Understand the structure of a Kotlin project.
+- Use Gradle to build and test an application.
+- Work with Kotlin classes, interfaces, data classes, and enums.
+- Understand the repository and service layers.
+- Implement basic library management operations.
+- Read and understand an existing codebase.
+- Write unit tests for application functionality.
+- Use Git and GitHub for version control and collaboration.
+- Identify implementation limitations and propose improvements.
 
-### 1. **Learn Gradle Basics**
-Gradle is the build tool we'll use throughout Android development. Complete the beginner tutorial:
-- [Gradle Getting Started Guide](https://docs.gradle.org/current/userguide/part1_gradle_init.html)
+## Prerequisites
 
-> ⚠️ **Note**: Download the latest Gradle version and practice in a separate project before returning to this one.
+Before running the project, ensure that you have the following installed:
 
-### 2. **Master Kotlin Fundamentals**
-Choose your learning path:
+- **Java Development Kit (JDK):** A version compatible with the project's Gradle configuration.
+- **Git:** To clone and manage the repository.
+- **Gradle Wrapper:** Included in the project, so a separate Gradle installation is generally unnecessary.
 
-**Option A - Google's Android Pathway (Recommended for beginners):**
-- [Android Basics in Kotlin - Unit 1](https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-1)
+Useful learning resources:
 
-**Option B - Official Kotlin Documentation:**
-- [Kotlin Getting Started Guide](https://kotlinlang.org/docs/getting-started.html)
+- [Gradle Documentation](https://docs.gradle.org/)
+- [Kotlin Documentation](https://kotlinlang.org/docs/home.html)
+- [Kotlin Getting Started](https://kotlinlang.org/docs/getting-started.html)
+- [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 
-**Minimum Requirements:** Understand concepts covered in class + Chapter 3 materials.
+## Project Features
 
----
+The application is designed to support the following operations:
 
+- Add books to the library.
+- Register library patrons.
+- Borrow books.
+- Return borrowed books.
+- Search for books by title or author.
+- List all books.
+- Display patron information and borrowed books.
+- Delete books when the operation is permitted.
+- Delete patrons when the operation is permitted.
+- Display library statistics.
 
+The project uses an in-memory repository. Therefore, records are not permanently stored after the application exits.
 
-## 🎮 Your Task
+## Project Structure
 
-### **Primary Goal**
-Complete the missing implementation by:
+The main application code is organized into packages under `app/src/main/kotlin`.
 
-1. **Run the provided JAR** to see how the application should behave:
-   ```bash
-   java -jar app.jar
-   ```
-   Observe all features and workflows.
+```text
+app/
+├── src/
+│   ├── main/
+│   │   └── kotlin/
+│   │       └── org/
+│   │           └── dbu/
+│   │               └── library/
+│   │                   ├── model/
+│   │                   ├── repository/
+│   │                   ├── service/
+│   │                   └── ui/
+│   └── test/
+│       └── kotlin/
+│           └── org/
+│               └── example/
+│                   └── LibraryServiceTest.kt
+├── build.gradle.kts
+└── ...
+```
 
-2. **Navigate to the entry point**: `ConsoleApp.kt`
+The exact project structure may contain additional files.
 
-3. **Fill in all the blanks** (`TODO` sections) to make your code produce the same behavior as the runnable JAR.
+### Main Components
 
----
+- **Model:** Defines library data, including books and patrons.
+- **Repository:** Manages the in-memory storage and retrieval of library records.
+- **Service:** Implements library business rules, including borrowing, returning, searching, and deletion.
+- **UI:** Handles interaction between the user and the library service.
+- **Tests:** Verify that important operations work correctly and handle common error cases.
 
-## 🚀 How to Build & Run
+## Original Assignment Instructions
 
-### **Build the Project**
+The original exercise asks students to inspect the provided runnable JAR and existing source code, then implement the missing functionality.
+
+The original learning tasks include:
+
+1. Run the provided application JAR, if it is supplied.
+2. Inspect the console application and understand its expected behavior.
+3. Complete the TODO sections in the source code.
+4. Build and run the application.
+5. Commit and push the completed work to GitHub.
+
+The original assignment identifies the repository and service implementation as important areas to complete.
+
+## Getting Started
+
+### 1. Clone the Repository
+
+Clone this repository using Command Prompt:
+
+```bat
+git clone https://github.com/kura458/kotlin-library-management-improved.git
+```
+
+Move into the project directory:
+
+```bat
+cd kotlin-library-management-improved
+```
+
+### 2. Build the Project
+
+On Windows, run:
+
+```bat
+gradlew.bat clean build --console=plain
+```
+
+On Linux or macOS, run:
+
 ```bash
-# Clean and build
 ./gradlew clean build
-
-# Create runnable JAR
-./gradlew jar
-
-# Create distribution package
-./gradlew distZip
 ```
 
-### **Run the Application**
+### 3. Run the Application
+
+On Windows:
+
+```bat
+gradlew.bat run --console=plain
+```
+
+On Linux or macOS:
+
 ```bash
-# Option 1: Run directly with Gradle
 ./gradlew run
-
-# Option 2: Run the JAR file
-java -jar build/libs/app.jar
-
-# Option 3: Run from distribution
-./gradlew distZip
-cd build/distributions/
-unzip app.zip
-cd app/bin
-./app  # (or app.bat on Windows)
 ```
 
----
+### 4. Run Automated Tests
 
-## ✅ Expected Features (What the completed app should do)
+On Windows:
 
-When complete, the application should:
+```bat
+gradlew.bat clean test --console=plain
+```
 
-- 📖 **Add books** to the library (ISBN, title, author, year)
-- 👤 **Register patrons** (ID, name, email, phone)
-- 📤 **Borrow books** (with availability and limit checks)
-- 📥 **Return books**
-- 🔍 **Search books** by title or author
-- 📋 **List all books** (available/borrowed status)
-- 👥 **View all patrons** and their borrowed books
+On Linux or macOS:
 
----
+```bash
+./gradlew clean test
+```
 
-## 📝 Implementation Notes
+A successful test run should finish with a `BUILD SUCCESSFUL` message.
 
-- The code follows a layered architecture:
-  - `model/` - Data classes (already complete)
-  - `repository/` - Data access interface (to be implemented)
-  - `service/` - Business logic (to be completed)
-  - `ui/` - Console interface (already complete)
+### 5. Create a JAR
 
-- Focus on implementing the missing parts in:
-  - `InMemoryRepository.kt`
-  - `DefaultLibraryService.kt`
+On Windows:
 
-- Use the runnable JAR as your **specification** - match its behavior exactly
+```bat
+gradlew.bat jar
+```
 
----
+The generated JAR is normally located under:
 
-## 🆘 Getting Help
+```text
+app/build/libs/
+```
 
-If stuck:
-1. Review the Kotlin learning materials
-2. Check Gradle documentation
-3. Run the provided JAR to understand expected behavior
-4. Ask questions in group
+### 6. Create a Distribution ZIP
 
+On Windows:
 
----
-# submission instruction
+```bat
+gradlew.bat distZip
+```
 
-- Fork the Repository
-- Clone and Work on the Code
-- Commit Your Changes and Push to Your Fork
+The generated distribution ZIP is normally located under:
+
+```text
+app/build/distributions/
+```
+
+## Additional Improvements and Testing
+
+This repository includes additional automated tests and documentation created during the implementation review.
+
+### Automated Tests Added
+
+The additional `LibraryServiceTest.kt` tests cover the following scenarios:
+
+- Rejecting a book with a duplicate ISBN.
+- Successfully borrowing an available book.
+- Handling a request for a book that does not exist.
+- Handling a request from a patron who does not exist.
+- Rejecting a borrowing request when the book is unavailable.
+- Successfully returning a borrowed book.
+- Searching for books without case sensitivity.
+- Enforcing the limit of three borrowed books per patron.
+
+These tests are intended to verify the core library service behavior and help prevent regressions when the implementation changes.
+
+### Test Results
+
+The following command was executed after adding the additional tests:
+
+```bat
+gradlew.bat clean test --console=plain
+```
+
+**Result:** `BUILD SUCCESSFUL`
+
+This confirms that the project compiled and the automated tests passed in the tested environment at the time of verification.
+
+## Implementation Comparison
+
+The implementation review compares the original project with the reviewed implementation and records observations about functionality, behavior, testing, and possible improvements.
+
+See [`IMPLEMENTATION_COMPARISON.md`](IMPLEMENTATION_COMPARISON.md) for the detailed comparison.
+
+The comparison is intended to help identify:
+
+- Implemented library operations.
+- Business rules enforced by the service.
+- Existing test coverage.
+- Potential edge cases.
+- Areas that could benefit from further development.
+
+## Future Enhancements
+
+The following improvements are proposed for future development. They should not be considered implemented unless they are subsequently added and tested.
+
+- Add persistent database storage using SQLite or PostgreSQL.
+- Improve input validation for book and patron details.
+- Add tests for deletion operations and library statistics.
+- Test duplicate patron IDs and other edge cases.
+- Ensure repository update operations cannot unintentionally create missing records.
+- Make the displayed menu consistent with the operations supported by the menu handler.
+- Improve error messages and handling of invalid user input.
+- Add data backup and export functionality.
+- Improve separation between application logic and user-interface code.
+
+See [`FUTURE_ENHANCEMENTS.md`](FUTURE_ENHANCEMENTS.md) for the proposed enhancement list.
+
+## Current Limitations
+
+- The application uses in-memory storage, so records are lost when the application exits.
+- The current additional tests focus on core borrowing, returning, searching, and duplicate-book behavior.
+- Further testing is needed for deletion restrictions, library statistics, duplicate patron IDs, and other edge cases.
+- Database persistence and other proposed enhancements have not been implemented merely by documenting them.
+
+## Version Control and Submission
+
+To check your changes:
+
+```bat
+git status
+```
+
+To stage and commit your changes:
+
+```bat
+git add .
+git commit -m "Add library service tests and documentation"
+```
+
+To push your changes to GitHub:
+
+```bat
+git push origin main
+```
+
+Before submitting, verify that the project builds successfully and that the tests pass.
+
+## Related Repositories
+
+- **Improved review repository:** https://github.com/kura458/kotlin-library-management-improved
+- **Reviewed classmate repository:** https://github.com/malfiya1212/kotlin__gradle_project
+- **Original university repository:** https://github.com/Debre-birhan-university/kotlin__gradle_project
+
+## Author and Academic Purpose
+
+This project is maintained as part of a university software development exercise involving Kotlin, Gradle, automated testing, code review, documentation, and version control.
+
+The goal is to understand an existing implementation, test its behavior, document observations, and propose meaningful improvements.
