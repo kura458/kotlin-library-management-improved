@@ -26,7 +26,7 @@ By working on this project, students will learn how to:
 
 Before running the project, ensure that you have the following installed:
 
-- **Java Development Kit (JDK):** A version compatible with the project's Gradle configuration.
+- **Java Development Kit (JDK) 21:** The Gradle build is configured to use the Java 21 toolchain. Install JDK 21 so Gradle can compile the project.
 - **Git:** To clone and manage the repository.
 - **Gradle Wrapper:** Included in the project, so a separate Gradle installation is generally unnecessary.
 
@@ -161,7 +161,7 @@ On Linux or macOS:
 ./gradlew clean test
 ```
 
-A successful test run should finish with a `BUILD SUCCESSFUL` message.
+A successful test run should finish with a `BUILD SUCCESSFUL` message. The additional service tests are located at `app/src/test/kotlin/org/example/LibraryServiceTest.kt`.
 
 ### 5. Create a JAR
 
